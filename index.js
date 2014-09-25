@@ -1,13 +1,17 @@
-var $ = document.querySelector.bind(document)
-var form = $('#settings')
-function changecolors (e) {
-  $('#background').style.fill = $('#background-color').value
-  $('#foreground').style.fill = $('#foreground-color').value
-  $('#letter-left').textContent = $('#letter-left-input').value
-  $('#letter-middle').textContent =$('#letter-middle-input').value
-  $('#letter-right').textContent = $('#letter-right-input').value
-  return false
-}
+window.onload = function () {
+  var $ = document.querySelector.bind(document)
+  
+  function changecolors (e) {
+    $('#background').style.fill = $('#background-color').value
+    $('#foreground').style.fill = $('#foreground-color').value
+    var initials = $('#initials').value
+    $('#letter-left').textContent = initials[0] || '?'
+    $('#letter-middle').textContent =initials[1] || '?'
+    $('#letter-right').textContent = initials[2] || '?'
+  }
 
-form.onsubmit = changecolors
-changecolors()
+  $('#background-color').addEventListener("input", changecolors, false)
+  $('#foreground-color').addEventListener("input", changecolors, false)
+  $('#initials').onchange = changecolors
+  changecolors()
+}
