@@ -1,3 +1,4 @@
+
 window.onload = function () {
   var $ = document.querySelector.bind(document)
   
@@ -8,6 +9,11 @@ window.onload = function () {
     $('#letter-left').textContent = initials[0] || '?'
     $('#letter-middle').textContent =initials[1] || '?'
     $('#letter-right').textContent = initials[2] || '?'
+    getimage()
+  }
+  
+  function getimage() {
+    $('#download').href = 'data:image/svg+xml;base64,' + btoa($('svg').outerHTML)
   }
 
   $('#background-color').addEventListener("input", changecolors, false)
